@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello NouvelleCategorieController!
+{% endblock %}
+
+{% block body %}
+	<a href="{{path('app_articles')}}">articles</a>
+	<a href="{{path('app_categories')}}">catégories</a>
+	<a href="{{path('app_deffault')}}">home</a>
+	<a href="{{path('app_nouvel_article')}}">Nouvel Article</a>
+	<a href="{{path('app_nouvelle_catégorie')}}">Nouvelle Catégorie</a>
+
+
+	<h1>Ajouter une nouvelle catégorie</h1>
+	{{ form_start(form) }}
+	{{ form_row(form.name) }}
+	{{ form_row(form.description) }}
+	{{ form_row(form.ajouter) }}
+	{{ form_end(form) }}
+
+
+{% endblock %}

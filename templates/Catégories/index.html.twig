@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DeffaultController!
+{% endblock %}
+
+{% block body %}
+	<a href="{{path('app_articles')}}">articles</a>
+	<a href="{{path('app_categories')}}">catégories</a>
+	<a href="{{path('app_deffault')}}">home</a>
+	<a href="{{path('app_nouvel_article')}}">Nouvel Article</a>
+	<a href="{{path('app_nouvelle_catégorie')}}">Nouvelle Catégorie</a>
+
+	<p>catégories</p>
+
+	{% for NouvelleCategorie in NouvelleCategories  %}
+		{{NouvelleCategorie.name}}
+
+		{{NouvelleCategorie.description}}<br>
+
+	{% endfor %}
+
+{% endblock %}
