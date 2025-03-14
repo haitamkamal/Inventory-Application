@@ -12,11 +12,12 @@
 
 	<p>catégories</p>
 
-	{% for NouvelleCategorie in NouvelleCategories  %}
-		{{NouvelleCategorie.name}}
-
-		{{NouvelleCategorie.description}}<br>
-
+	{% for NouvelleCategorie in NouvelleCategories %}
+		<a href="{{ path('app_categories_show', {'id': NouvelleCategorie.id}) }}">
+			{{ NouvelleCategorie.name }}
+		</a>
+		{{ NouvelleCategorie.description }}<br>
 	{% endfor %}
+
 
 {% endblock %}
