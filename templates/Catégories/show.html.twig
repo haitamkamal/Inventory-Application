@@ -2,12 +2,23 @@
 
 {% block title %}Hello DeffaultController!
 {% endblock %}
-
 {% block body %}
-	<a href="{{path('app_categories')}}">X</a>
+	<a href="{{ path('app_categories') }}">X</a><br><br>
 
-	{{NouvelleCategorie.name}}
-	{{NouvelleCategorie.description}}
+	<h3>{{ NouvelleCategorie.categorie }}</h3>
 
+	{% for article in articles %}
+
+		<h4>{{ article.nom }}</h4>
+
+		<p>{{ article.description }}</p>
+
+		<p>{{ article.date ? article.date|date('Y-m-d') : 'No date' }}</p>
+
+	{% else %}
+
+		<p>No articles found in this category.</p>
+
+	{% endfor %}
 
 {% endblock %}

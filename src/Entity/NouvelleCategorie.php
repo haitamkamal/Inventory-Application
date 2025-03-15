@@ -3,7 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\NouvelleCategorieRepository;
-use Doctrine\DBAL\Types\Types;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: NouvelleCategorieRepository::class)]
@@ -15,37 +16,37 @@ class NouvelleCategorie
     private ?int $id = null;
 
     #[ORM\Column(length: 200)]
-    private ?string $name = null;
+    private ?string $categorie = null;
 
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $description = null;
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: NouvelArticle::class, orphanRemoval: true)]
+    private Collection $articles;
+
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getCategorie(): ?string
     {
-        return $this->name;
+        return $this->categorie;
     }
 
-    public function setName(string $name): static
+    public function setCategorie(string $categorie): static
     {
-        $this->name = $name;
-
+        $this->categorie = $categorie;
         return $this;
     }
 
-    public function getDescription(): ?string
+    /**
+     * @return Collection<int, NouvelArticle>
+     */
+    public function getArticles(): Collection
     {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): static
-    {
-        $this->description = $description;
-
-        return $this;
+        return $this->articles;
     }
 }

@@ -4,13 +4,23 @@
 {% endblock %}
 
 {% block body %}
-	<a href="{{path('app_articles')}}">articles</a>
-	<a href="{{path('app_categories')}}">catégories</a>
-	<a href="{{path('app_deffault')}}">home</a>
+	<a href="{{path('app_articles')}}">Articles</a>
+	<a href="{{path('app_categories')}}">Catégories</a>
+	<a href="{{path('app_deffault')}}">Home</a>
 	<a href="{{path('app_nouvel_article')}}">Nouvel Article</a>
 	<a href="{{path('app_nouvelle_catégorie')}}">Nouvelle Catégorie</a>
 
 
-	<p>articles</p>
+	<h1>Articles</h1>
+
+	{% for NouvelleArticle in NouvelleArticles %}
+		<div>
+			<h3>{{ NouvelleArticle.nom }}</h3>
+			<p>{{ NouvelleArticle.categorie.categorie }}</p>
+			<p>{{ NouvelleArticle.description }}</p>
+			<p>{{ NouvelleArticle.date ? NouvelleArticle.date|date('Y-m-d') : 'No date' }}</p>
+		</div>
+	{% endfor %}
+
 
 {% endblock %}
