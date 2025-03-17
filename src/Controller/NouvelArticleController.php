@@ -13,7 +13,7 @@ use App\Entity\NouvelArticle;
 
 final class NouvelArticleController extends AbstractController
 {
-    #[Route('/nouvel/article', name: 'app_nouvel_article')]
+    #[Route('/nouvelle/article', name: 'app_nouvelle_article')]
     public function new(Request $request,EntityManagerInterface $manager)
     :Response {
         $NouvelArticle = new NouvelArticle;
