@@ -1,10 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<h1>Supprimer Article</h1>
-	<p>Es-tu sûr ?</p>
-	<form method="post">
-		<button>Supprimer</button>
-	</form>
+    <!-- Confirmation Modal -->
+    <div class="bg-gray-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 p-4 rounded-lg">
+        <div class="flex flex-col justify-center items-center shadow-xl bg-white p-6 rounded-lg">
+            <!-- Modal Title -->
+            <h1 class="text-xl font-semibold mb-4">Supprimer Article</h1>
 
+            <!-- Confirmation Message -->
+            <p class="mb-6">Es-tu sûr de vouloir supprimer cet article ?</p>
+
+            <!-- Delete Form -->
+            <form method="post" action="{{ path('articles_delete', {'id': NouvelleArticle.id}) }}">
+                <!-- Hidden Method Field for POST -->
+                <input type="hidden" name="_method" value="POST">
+
+                <!-- Delete Button -->
+                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg shadow-lg shadow-red-500/50 transition duration-300 ease-in-out cursor-pointer">
+                    Supprimer
+                </button>
+
+                <!-- Cancel Button -->
+                <a href="{{ path('app_articles') }}" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg shadow-lg shadow-gray-500/50 transition duration-300 ease-in-out cursor-pointer ml-4">
+                    Annuler
+                </a>
+            </form>
+        </div>
+    </div>
+
+    <!-- Overlay (optional) -->
+    <div id="overlay" class="fixed inset-0 bg-cyan-800 bg-opacity-50 z-20 blur-sm " ></div>
 {% endblock %}

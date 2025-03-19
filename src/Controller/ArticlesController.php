@@ -25,15 +25,18 @@ final class ArticlesController extends AbstractController
     #[Route('/articles/{id<\d+>}/supprimer', name: 'articles_delete')]
     public function delete(Request $request, NouvelArticle $nouvelArticle, EntityManagerInterface $manager): Response
     {
+        // Handle the POST request (confirmation form submission)
         if ($request->isMethod('POST')) {
             $manager->remove($nouvelArticle);
             $manager->flush();
 
+            // Redirect to the articles list after deletion
             return $this->redirectToRoute('app_articles');
         }
 
+        // Render the confirmation modal for GET requests
         return $this->render('Articles/delete.html.twig', [
-            'id' => $nouvelArticle->getId(),
+            'NouvelleArticle' => $nouvelArticle, // Pass the full article object
         ]);
     }
 }

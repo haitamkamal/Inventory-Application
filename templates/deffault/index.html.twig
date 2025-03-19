@@ -4,17 +4,23 @@
 {% endblock %}
 
 {% block body %}
-	<a href="{{path('app_articles')}}">Articles</a>
-	<a href="{{path('app_categories')}}">Catégories</a>
-	<a href="{{path('app_deffault')}}">Home</a>
-	<a href="{{path('app_nouvelle_article')}}">Nouvelle Article</a>
-	<a href="{{path('app_nouvelle_catégorie')}}">Nouvelle Catégorie</a>
+<div class="flex " >
+	<a href="{{path('app_articles')}}" class=" basis-1/3 underline">Articles</a>
+	<a href="{{path('app_categories')}}" class=" basis-1/3 underline" >Catégories</a>
+	<a href="{{path('app_deffault')}}" class=" basis-1/3 underline" >Home</a>
+	<a href="{{path('app_nouvelle_article')}}" class=" basis-1/3 underline">Nouvelle Article</a>
+	<a href="{{path('app_nouvelle_catégorie')}}" class=" basis-1/3 underline" >Nouvelle Catégorie</a>
+</div>
+	
+<div class="h-10 w-full border-green-600 border-2 rounded-md my-10 p-5 flex justify-center items-center bg-green-200">
+    <h1 class="text-lg text-center font-serif text-blue-600 mb-1 animate-bounce">Books Inventory</h1>
+</div>
 
+		<div class="flex justify-center items-center" >
+			<a href="{{path('app_categories')}}" class="  bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg shadow-xl shadow-green-500/50 transition duration-300 ease-in-out " >
+			explorer les catégories</a>
+		</div>
 
-	<h1>Books Inventory</h1>
-
-	<button>
-		<a href="{{path('app_categories')}}">explorer les catégories</a>
-	</button>
+	
 
 {% endblock %}
